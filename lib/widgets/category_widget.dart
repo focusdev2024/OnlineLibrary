@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 
 class CategoryWidget extends StatefulWidget {
   const CategoryWidget({
@@ -11,8 +10,6 @@ class CategoryWidget extends StatefulWidget {
 }
 
 class _CategoryWidgetState extends State<CategoryWidget> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +32,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30),),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
               child: Image.asset(
                 'assets/images/tagamly_sozler001.png',
                 width: 300,

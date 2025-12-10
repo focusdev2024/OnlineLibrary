@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:online_library/features/sing_up_page/presentation/sing_up_page.dart';
 import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
+//import 'dart:convert';
 
 import '../../../widgets/password_text_field.dart';
 import '../../../widgets/phone_number_text_field.dart';
@@ -19,7 +19,7 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool _isLoading = false;
+  //bool _isLoading = false;
   late SharedPreferences prefs;
 
   @override
@@ -32,52 +32,52 @@ class _LogInPageState extends State<LogInPage> {
     prefs = await SharedPreferences.getInstance();
   }
 
-  Future<void> _login() async {
-    setState(() {
-      _isLoading = true;
-    });
-    final String phoneNumber =
-        _phoneNumberController.text.trim().replaceAll(' ', '');
-    final String password = _passwordController.text.trim();
+  // Future<void> _login() async {
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  //   final String phoneNumber =
+  //       _phoneNumberController.text.trim().replaceAll(' ', '');
+  //   final String password = _passwordController.text.trim();
 
-    final url = 'http://127.0.0.1:8000/login/'; // Replace with your backend URL
+  //   final url = 'http://127.0.0.1:8000/login/'; // Replace with your backend URL
 
-    try {
-      final response = await http.post(
-        Uri.parse(url),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{
-          'phone_number': '993' + phoneNumber,
-          'password': password,
-        }),
-      );
+  //   try {
+  //     final response = await http.post(
+  //       Uri.parse(url),
+  //       headers: <String, String>{
+  //         'Content-Type': 'application/json; charset=UTF-8',
+  //       },
+  //       body: jsonEncode(<String, String>{
+  //         'phone_number': '993' + phoneNumber,
+  //         'password': password,
+  //       }),
+  //     );
 
-      if (response.statusCode == 200) {
-        // Successfully logged  in
-        // Navigate to next screen or do whatever you need
-        final responseData = jsonDecode(response.body);
-        var refresh = responseData['refresh'];
-        var access = responseData['access'];
-        prefs.setString('refresh', refresh);
-        prefs.setString('access', access);
-        print(refresh);
-        print(access);
-      } else {
-        // Handle error
-        // You can show error message to the user
-        print('Failed to login: ${response.body}');
-      }
-    } catch (e) {
-      // Handle network error
-      print('Network error: $e');
-    } finally {
-      setState(() {
-        _isLoading = false;
-      });
-    }
-  }
+  //     if (response.statusCode == 200) {
+  //       // Successfully logged  in
+  //       // Navigate to next screen or do whatever you need
+  //       final responseData = jsonDecode(response.body);
+  //       var refresh = responseData['refresh'];
+  //       var access = responseData['access'];
+  //       prefs.setString('refresh', refresh);
+  //       prefs.setString('access', access);
+  //       print(refresh);
+  //       print(access);
+  //     } else {
+  //       // Handle error
+  //       // You can show error message to the user
+  //       print('Failed to login: ${response.body}');
+  //     }
+  //   } catch (e) {
+  //     // Handle network error
+  //     print('Network error: $e');
+  //   } finally {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

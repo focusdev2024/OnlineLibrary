@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 
 class SettingsContainerWidget extends StatelessWidget {
   final String containerName;
@@ -7,6 +6,7 @@ class SettingsContainerWidget extends StatelessWidget {
   final IconData containerIcon;
   final onTap;
   const SettingsContainerWidget({
+    super.key,
     required this.containerName,
     required this.containerItemValue,
     required this.onTap,

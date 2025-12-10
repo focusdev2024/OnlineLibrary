@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 
 class BookWidget extends StatefulWidget {
   const BookWidget({

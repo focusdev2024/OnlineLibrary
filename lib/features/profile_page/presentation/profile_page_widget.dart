@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +19,7 @@ class ProfilePageWidget extends StatefulWidget {
 
 enum LanguageCharacter { tkm, rus, eng }
 
-LanguageCharacter? _character = LanguageCharacter.tkm;
+//LanguageCharacter? _character = LanguageCharacter.tkm;
 
 enum ThemeCharacter { acyk, gara }
 
@@ -25,19 +27,15 @@ ThemeCharacter? _themeCharacter = ThemeCharacter.acyk;
 
 enum ForChildCharacter { hawa, yok }
 
-ForChildCharacter? _forChildCharacter = ForChildCharacter.yok;
+//ForChildCharacter? _forChildCharacter = ForChildCharacter.yok;
 
 enum AutoSaveCharacter { hawa, yok }
 
-AutoSaveCharacter? _autoSaveCharacter = AutoSaveCharacter.yok;
+//AutoSaveCharacter? _autoSaveCharacter = AutoSaveCharacter.yok;
 
 enum OnlyWiFiCharacter { hawa, yok }
 
-OnlyWiFiCharacter? _onlyWiFiCharacter = OnlyWiFiCharacter.yok;
-
-
-
-  
+//OnlyWiFiCharacter? _onlyWiFiCharacter = OnlyWiFiCharacter.yok;
 
 class _ProfilePageWidgetState extends State<ProfilePageWidget> {
   void _updateTheme(ThemeCharacter themeCharacter) {
@@ -49,8 +47,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         AdaptiveTheme.of(context).setDark();
       }
     });
-    
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -132,37 +130,34 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                 content: Column(
                   children: [
                     RadioListTile<ThemeCharacter>(
-                title: const Text('Light Mode'),
-                value: ThemeCharacter.acyk,
-                groupValue: _themeCharacter,
-                onChanged: (ThemeCharacter? value) {
-                          if (value != null) {
-                            _updateTheme(value);
-                            Navigator.of(context).pop();
-                          }
-                        
-                },
-              ),
-              RadioListTile<ThemeCharacter>(
-                title: const Text('Dark Mode'),
-                value: ThemeCharacter.gara,
-                groupValue: _themeCharacter,
-                onChanged: (ThemeCharacter? value) {
-                          if (value != null) {
-                            _updateTheme(value);
-                            Navigator.of(context).pop();
-                          }
-                        },
-              ),                    
-                    
+                      title: const Text('Light Mode'),
+                      value: ThemeCharacter.acyk,
+                      groupValue: _themeCharacter,
+                      onChanged: (ThemeCharacter? value) {
+                        if (value != null) {
+                          _updateTheme(value);
+                          Navigator.of(context).pop();
+                        }
+                      },
+                    ),
+                    RadioListTile<ThemeCharacter>(
+                      title: const Text('Dark Mode'),
+                      value: ThemeCharacter.gara,
+                      groupValue: _themeCharacter,
+                      onChanged: (ThemeCharacter? value) {
+                        if (value != null) {
+                          _updateTheme(value);
+                          Navigator.of(context).pop();
+                        }
+                      },
+                    ),
                   ],
                 ),
               );
             },
             containerName: 'Theme',
-            containerItemValue: _themeCharacter == ThemeCharacter.acyk
-                ? 'Light'
-                : 'Dark',
+            containerItemValue:
+                _themeCharacter == ThemeCharacter.acyk ? 'Light' : 'Dark',
             containerIcon: Icons.brightness_6_rounded,
           ),
           const SizedBox(height: 5),
