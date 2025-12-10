@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_library/features/sing_up_page/presentation/sing_up_page.dart';
+import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
-import 'package:online_library/widgets/style_button_widget.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:online_library/features/otp/presentation/otp.dart';
 import 'package:online_library/features/sing_in_page/presentation/login_page.dart';
+import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 import 'package:online_library/widgets/phone_number_text_field.dart';
-import 'package:online_library/widgets/style_button_widget.dart';
 
 class SingUpPage extends StatefulWidget {
   const SingUpPage({super.key});

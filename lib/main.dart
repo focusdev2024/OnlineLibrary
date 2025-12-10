@@ -5,11 +5,13 @@ import 'package:online_library/features/library_main_page/presentation/library_m
 import 'package:online_library/features/otp/presentation/otp.dart';
 import 'package:online_library/features/read_and_buy_page/presentation/read_and_buy_page.dart';
 import 'package:online_library/features/welcome_page/presentation/welcome_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_library/features/home_page/presentation/pages/home_page_widget.dart';
+import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/theme/app_theme.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
   runApp(
     OnlineLibrary(
