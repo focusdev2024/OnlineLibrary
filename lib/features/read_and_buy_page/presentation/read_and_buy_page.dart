@@ -93,7 +93,7 @@ class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
                 ),
                 const SizedBox(height: 20),
                 StyleButtonWidget(
-                  buttonName: 'Read',
+                  buttonName: 'Download',
                   onTap: () {},
                   buttonColor: Theme.of(context).primaryColor,
                   buttonBorderColor: Theme.of(context).dividerColor,
