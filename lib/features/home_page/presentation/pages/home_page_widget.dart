@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 import 'package:online_library/features/home_page/widgets/all_books_widget.dart';
 import 'package:online_library/widgets/search_box_widget.dart';
@@ -12,10 +13,10 @@ class MainPageWidget extends StatefulWidget {
 }
 
 class _MainPageWidgetState extends State<MainPageWidget> {
-  List<String> items = [
-    'Section',
-    'All Books',
-  ];
+  List<String> get items => [
+        AppLocalizations.of(context)!.section,
+        'All Books',
+      ];
 
   final _searchController = TextEditingController();
 
@@ -92,7 +93,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
   Widget _getCategoryContent(String category) {
     switch (category) {
       case 'Section':
-        return const SectionsWidget();
+        return SectionsWidget();
       case 'All Books':
       default:
         return const AllBooksWidget();
