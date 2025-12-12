@@ -158,11 +158,11 @@ abstract class AppLocalizations {
   /// **'Log in here'**
   String get logInHere;
 
-  /// Tagamly sozler
+  /// Section
   ///
   /// In en, this message translates to:
-  /// **'Tagamly Sözler'**
-  String get tagamlySozler;
+  /// **'Section'**
+  String get section;
 }
 
 class _AppLocalizationsDelegate

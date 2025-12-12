@@ -39,5 +39,5 @@ class AppLocalizationsEs extends AppLocalizations {
   String get logInHere => 'Giriş';
 
   @override
-  String get tagamlySozler => 'Tagamly Sözler';
+  String get section => 'Section';
 }

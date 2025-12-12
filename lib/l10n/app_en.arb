@@ -49,8 +49,8 @@
     "description": "Log in here"
   },
 
-   "tagamlySozler": "Tagamly Sözler",
-  "@tagamlySozler": {
-    "description": "Tagamly sozler"
+   "section": "Section",
+  "@section": {
+    "description": "Section"
   }
 }
