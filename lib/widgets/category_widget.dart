@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CategoryWidget extends StatefulWidget {
+class CategoryWidget extends StatelessWidget {
+  final String categoryNames;
   const CategoryWidget({
     super.key,
+    required this.categoryNames,
   });
 
-  @override
-  State<CategoryWidget> createState() => _CategoryWidgetState();
-}
-
-class _CategoryWidgetState extends State<CategoryWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -44,9 +41,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               ),
             ),
             const SizedBox(height: 15),
-            const Padding(
-              padding: EdgeInsets.only(left: 5.0),
-              child: Text('Category Name'),
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0),
+              child: Text(categoryNames), // Changed to Text widget
             ),
           ],
         ),

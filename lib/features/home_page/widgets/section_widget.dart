@@ -5,15 +5,12 @@ import 'package:online_library/features/read_and_buy_page/presentation/read_and_
 import 'package:online_library/widgets/category_widget.dart';
 
 class SectionsWidget extends StatelessWidget {
-  SectionsWidget({super.key});
-
-  final genres = mockGenres;
-  final categories = mockCategories;
+  const SectionsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.only(left: 10.0),
+      padding: const EdgeInsets.only(left: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,35 +18,49 @@ class SectionsWidget extends StatelessWidget {
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: genres.length,
+            itemCount: mockGenres.length,
             itemBuilder: (context, index) {
+              final genre = mockGenres[index];
+
+              final filteredCategories = mockCategories
+                  .where((cat) => genre.categoryIds.contains(cat.id))
+                  .toList();
+              // Here might be error page if no categories found
+              if (filteredCategories.isEmpty) return const SizedBox();
+
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${genres[index].name} '),
-                  Text('${genres[index].categoryIds} '),
+                  Text(
+                    genre.name,
+                  ),
+                  const SizedBox(height: 8),
                   SizedBox(
                     height: 170,
                     child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      itemCount: genres.length,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: filteredCategories.length,
                       itemBuilder: (context, bookIndex) {
+                        final category = filteredCategories[bookIndex];
+
                         return GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ReadAndBuyPage(),
+                                builder: (_) => const ReadAndBuyPage(),
                               ),
                             );
                           },
-                          child: const CategoryWidget(),
+                          child: CategoryWidget(
+                            categoryNames: category.name,
+                          ),
                         );
                       },
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
                 ],
               );
             },
