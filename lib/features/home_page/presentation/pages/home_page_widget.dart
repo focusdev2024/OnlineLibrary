@@ -93,7 +93,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
   Widget _getCategoryContent(String category) {
     switch (category) {
       case 'Section':
-        return SectionsWidget();
+        return const SectionsWidget();
       case 'All Books':
       default:
         return const AllBooksWidget();

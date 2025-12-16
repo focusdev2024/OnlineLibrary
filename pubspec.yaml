@@ -41,6 +41,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/carousel_images/
+    - assets/images/book_images/
+    - assets/images/category_images/
+    - assets/images/genre_images/
  
   # fonts:
   #   - family: Schyler

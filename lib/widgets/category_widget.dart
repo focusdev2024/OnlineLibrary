@@ -1,10 +1,14 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class CategoryWidget extends StatelessWidget {
   final String categoryNames;
+  final String? imagePath;
   const CategoryWidget({
     super.key,
     required this.categoryNames,
+    this.imagePath,
   });
 
   @override
@@ -15,26 +19,23 @@ class CategoryWidget extends StatelessWidget {
         width: 200,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).dividerColor,
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3),
+              color: Theme.of(context).shadowColor.withOpacity(0.09),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              ),
+            Material(
+              borderRadius: BorderRadius.circular(24),
+              clipBehavior: Clip.antiAlias,
               child: Image.asset(
-                'assets/images/tagamly_sozler001.png',
+                imagePath ?? 'assets/images/tagamly_sozler001.png',
                 width: 300,
                 height: 100,
                 fit: BoxFit.cover,
@@ -43,7 +44,7 @@ class CategoryWidget extends StatelessWidget {
             const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 5.0),
-              child: Text(categoryNames), // Changed to Text widget
+              child: Text(categoryNames),
             ),
           ],
         ),

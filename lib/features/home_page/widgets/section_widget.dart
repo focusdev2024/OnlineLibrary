@@ -55,6 +55,7 @@ class SectionsWidget extends StatelessWidget {
                           },
                           child: CategoryWidget(
                             categoryNames: category.name,
+                            imagePath: category.imageUrl,
                           ),
                         );
                       },

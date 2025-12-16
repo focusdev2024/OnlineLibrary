@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:online_library/features/home_page/presentation/pages/home_page_widget.dart';
@@ -46,10 +48,10 @@ class _LibraryMainPageState extends State<LibraryMainPage> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).dividerColor,
-              offset: const Offset(0, -4),
-              blurRadius: 10,
+              color: Theme.of(context).shadowColor.withOpacity(0.08),
               spreadRadius: 2,
+              blurRadius: 10,
+              offset: const Offset(0, 3),
             ),
           ],
         ),

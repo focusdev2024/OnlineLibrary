@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class BookWidget extends StatefulWidget {
@@ -26,10 +28,10 @@ class _BookWidgetState extends State<BookWidget> {
         width: 200,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).dividerColor,
+              color: Theme.of(context).shadowColor.withOpacity(0.09),
               spreadRadius: 2,
               blurRadius: 10,
               offset: const Offset(0, 3),
@@ -41,8 +43,9 @@ class _BookWidgetState extends State<BookWidget> {
           children: [
             Stack(
               children: <Widget>[
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                Material(
+                  borderRadius: BorderRadius.circular(24),
+                  clipBehavior: Clip.antiAlias,
                   child: Image.asset(
                     'assets/images/tagamly_sozler001.png',
                     width: 300,
