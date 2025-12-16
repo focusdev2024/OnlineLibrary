@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:online_library/widgets/style_button_widget.dart';
 
 class ReadAndBuyPage extends StatefulWidget {
@@ -11,6 +12,14 @@ class ReadAndBuyPage extends StatefulWidget {
 class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
   @override
   Widget build(BuildContext context) {
+    final bookArgs = Get.arguments as Map<String, dynamic>?;
+    final String bookTitle =
+        bookArgs?['title'] as String? ?? 'Name of the book';
+    final String bookAuthor =
+        bookArgs?['author'] as String? ?? 'Author of the book';
+    final String bookImageUrl = bookArgs?['imageUrl'] as String? ??
+        'assets/images/tagamly_sozler001.png';
+
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
@@ -42,7 +51,7 @@ class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(30)),
                   child: Image.asset(
-                    'assets/images/tagamly_sozler001.png',
+                    bookImageUrl,
                     width: 230,
                     height: 340,
                     fit: BoxFit.cover,
@@ -51,36 +60,36 @@ class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
                 const SizedBox(height: 20),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Name of the book',
+                        bookTitle,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
-                        'Author of the book',
+                        bookAuthor,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 10),
-                      Text('About the author'),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text('About the author'),
+                      const Text(
                         'About the author text',
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         'Ovedview',
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         'Overview text',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
