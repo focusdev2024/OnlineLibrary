@@ -1,3 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:online_library/widgets/style_button_widget.dart';
@@ -28,19 +32,27 @@ class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
           child: Stack(children: [
             Positioned(
               top: 10,
-              child: Container(
-                alignment: Alignment.center,
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                    color: Theme.of(context).cardColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(30))),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.chevron_left_rounded,
+              left: 5,
+              child: ClipOval(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).shadowColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      iconSize: 24,
+                      padding: EdgeInsets.zero,
+                      onPressed: () => Navigator.pop(context),
+                      icon: Icon(
+                        Icons.chevron_left_rounded,
+                        color: Theme.of(context).dividerColor,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -100,14 +112,19 @@ class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const SizedBox(height: 20),
-                StyleButtonWidget(
-                  buttonName: 'Download',
-                  onTap: () {},
-                  buttonColor: Theme.of(context).primaryColor,
-                  buttonBorderColor: Theme.of(context).dividerColor,
-                )
+                const SizedBox(height: 10),
               ],
+            ),
+            Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: StyleButtonWidget(
+                buttonName: 'Download',
+                onTap: () {},
+                buttonColor: Theme.of(context).primaryColor,
+                buttonBorderColor: Theme.of(context).dividerColor,
+              ),
             ),
           ]),
         ),
