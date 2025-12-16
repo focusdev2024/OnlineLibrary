@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:online_library/core/routers/app_routes.dart';
 import 'package:online_library/data/mock/mock_data_category.dart';
 import 'package:online_library/data/mock/mock_data_genre.dart';
-import 'package:online_library/features/category_page/presentation/category_page.dart';
 import 'package:online_library/widgets/category_widget.dart';
 
 class SectionsWidget extends StatelessWidget {
@@ -46,12 +48,10 @@ class SectionsWidget extends StatelessWidget {
 
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => const CategoryPage(),
-                              ),
-                            );
+                            Get.toNamed(Routes.category, arguments: {
+                              'name': category.name,
+                              'id': category.id
+                            });
                           },
                           child: CategoryWidget(
                             categoryNames: category.name,

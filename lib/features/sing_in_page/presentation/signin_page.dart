@@ -9,14 +9,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../widgets/password_text_field.dart';
 import '../../../widgets/phone_number_text_field.dart';
 
-class LogInPage extends StatefulWidget {
-  const LogInPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<LogInPage> createState() => _LogInPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _LogInPageState extends State<LogInPage> {
+class _SignInPageState extends State<SignInPage> {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   //bool _isLoading = false;

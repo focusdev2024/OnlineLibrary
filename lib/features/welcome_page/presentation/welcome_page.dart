@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_library/features/sing_in_page/presentation/login_page.dart';
+import 'package:online_library/features/sing_in_page/presentation/signin_page.dart';
 import 'package:online_library/features/sing_up_page/presentation/sing_up_page.dart';
 import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/widgets/style_button_widget.dart';
@@ -44,7 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LogInPage()));
+                          builder: (context) => const SignInPage()));
                 },
               ),
               const SizedBox(
