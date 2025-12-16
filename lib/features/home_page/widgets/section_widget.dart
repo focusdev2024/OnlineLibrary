@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_library/data/mock/mock_data_category.dart';
 import 'package:online_library/data/mock/mock_data_genre.dart';
-import 'package:online_library/features/read_and_buy_page/presentation/read_and_buy_page.dart';
+import 'package:online_library/features/category_page/presentation/category_page.dart';
 import 'package:online_library/widgets/category_widget.dart';
 
 class SectionsWidget extends StatelessWidget {
@@ -49,7 +49,7 @@ class SectionsWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const ReadAndBuyPage(),
+                                builder: (_) => const CategoryPage(),
                               ),
                             );
                           },
