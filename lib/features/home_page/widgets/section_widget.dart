@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:online_library/core/routers/app_routes.dart';
 import 'package:online_library/data/mock/mock_data_category.dart';
 import 'package:online_library/data/mock/mock_data_genre.dart';
@@ -49,8 +48,9 @@ class SectionsWidget extends StatelessWidget {
                         return GestureDetector(
                           onTap: () {
                             Get.toNamed(Routes.category, arguments: {
+                              'id': category.id,
                               'name': category.name,
-                              'id': category.id
+                              'imageUrl': category.imageUrl,
                             });
                           },
                           child: CategoryWidget(

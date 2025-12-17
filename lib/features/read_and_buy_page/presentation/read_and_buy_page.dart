@@ -54,24 +54,21 @@ class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
             top: 10,
             left: 10,
             child: ClipOval(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).shadowColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: IconButton(
-                    iconSize: 24,
-                    padding: EdgeInsets.zero,
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(
-                      Icons.chevron_left_rounded,
-                      color: Theme.of(context).dividerColor,
-                    ),
+              child: Container(
+                width: 40,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).disabledColor.withOpacity(0.3),
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  iconSize: 24,
+                  padding: EdgeInsets.zero,
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(
+                    Icons.chevron_left_rounded,
+                    color: Theme.of(context).dividerColor,
                   ),
                 ),
               ),
