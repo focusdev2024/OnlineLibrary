@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:online_library/features/home_page/presentation/pages/home_page_widget.dart';
+import 'package:online_library/features/home_page/presentation/pages/main_page_widget.dart';
 import 'package:online_library/features/own_books/presentation/own_books_page.dart';
 import 'package:online_library/features/profile_page/presentation/profile_page_widget.dart';
 
@@ -34,7 +34,7 @@ class _LibraryMainPageState extends State<LibraryMainPage> {
           index: _selectedPage,
           children: const [
             MainPageWidget(),
-            FavoritesPageWidget(),
+            OwnBooksPageWidget(),
             ProfilePageWidget(),
           ],
         ),

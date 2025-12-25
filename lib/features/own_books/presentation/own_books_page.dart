@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class FavoritesPageWidget extends StatefulWidget {
-  const FavoritesPageWidget({super.key});
+class OwnBooksPageWidget extends StatefulWidget {
+  const OwnBooksPageWidget({super.key});
 
   @override
-  State<FavoritesPageWidget> createState() => _FavoritesPageWidgetState();
+  State<OwnBooksPageWidget> createState() => _OwnBooksPageWidgetState();
 }
 
-class _FavoritesPageWidgetState extends State<FavoritesPageWidget> {
+class _OwnBooksPageWidgetState extends State<OwnBooksPageWidget> {
   final urlImages = [
     'assets/images/carousel_images/9f0bbe386a.jpg',
     'assets/images/carousel_images/346824345923811.webp',

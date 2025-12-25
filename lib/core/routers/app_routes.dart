@@ -4,7 +4,7 @@ abstract class Routes {
   static const signUp = '/sign-up';
   static const getToken = '/get-token';
   static const library = '/library';
-  static const mainDetails = '/main-details';
+  static const mainDetails = '/mainDetails';
   static const category = '/category';
   static const readAndBuy = '/read-and-buy';
 }

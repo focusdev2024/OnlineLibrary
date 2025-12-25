@@ -1,7 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:online_library/core/routers/app_routes.dart';
 import 'package:online_library/features/category_page/presentation/category_page.dart';
-import 'package:online_library/features/home_page/presentation/pages/home_page_widget.dart';
+import 'package:online_library/features/home_page/presentation/pages/main_page_widget.dart';
 import 'package:online_library/features/library_main_page/presentation/library_main_page.dart';
 import 'package:online_library/features/otp/presentation/otp.dart';
 import 'package:online_library/features/read_and_buy_page/presentation/read_and_buy_page.dart';
