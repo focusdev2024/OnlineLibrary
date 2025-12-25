@@ -26,6 +26,7 @@ class SectionsWidget extends StatelessWidget {
               final filteredCategories = mockCategories
                   .where((cat) => genre.categoryIds.contains(cat.id))
                   .toList();
+
               // Here might be error page if no categories found
               if (filteredCategories.isEmpty) return const SizedBox();
 
