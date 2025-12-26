@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:online_library/core/routers/app_routes.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -62,7 +65,9 @@ class _OwnBooksPageWidgetState extends State<OwnBooksPageWidget> {
           // Image Carousel end
           const SizedBox(height: 10),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(Routes.favorites, arguments: {});
+            },
             child: const _FavoriteContainerWidget(
               containerName: 'Favorites',
               containerItemCount: '2',

@@ -55,9 +55,11 @@ class AllBooksWidget extends StatelessWidget {
                             });
                           },
                           child: BookWidget(
-                              bookTitle: book.title,
-                              bookAuthor: book.author,
-                              imagePath: book.imageUrl),
+                            bookId: book.id,
+                            bookTitle: book.title,
+                            bookAuthor: book.author,
+                            imagePath: book.imageUrl,
+                          ),
                         );
                       },
                     ),

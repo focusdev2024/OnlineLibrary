@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:online_library/core/routers/app_pages.dart';
 import 'package:online_library/core/routers/app_routes.dart';
+import 'package:online_library/features/favorites_page/controller/favorite_controller.dart';
 import 'package:online_library/features/favorites_page/data/models/favorite_book_model.dart';
 import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/theme/app_theme.dart';
@@ -17,6 +18,7 @@ void main() async {
 
   // Регистрируем адаптер, который создали в шаге 1
   Hive.registerAdapter(FavoriteBookModelAdapter());
+  Get.put(FavoriteController(), permanent: true);
 
   // Открываем бокс для избранного
   await Hive.openBox<FavoriteBookModel>('favorites_box');

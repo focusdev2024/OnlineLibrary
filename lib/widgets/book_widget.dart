@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:online_library/features/favorites_page/controller/favorite_controller.dart';
 
-class BookWidget extends StatefulWidget {
+class BookWidget extends StatelessWidget {
+  final int bookId;
   final String bookTitle;
   final String bookAuthor;
-  final bool isFavorite = false;
   final String? imagePath;
-  const BookWidget({
+
+  BookWidget({
     super.key,
+    required this.bookId,
     required this.bookTitle,
     required this.bookAuthor,
     this.imagePath,
   });
 
-  @override
-  State<BookWidget> createState() => _BookWidgetState();
-}
+  final FavoriteController favoriteController = Get.find<FavoriteController>();
 
-class _BookWidgetState extends State<BookWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -44,27 +45,29 @@ class _BookWidgetState extends State<BookWidget> {
                   borderRadius: BorderRadius.circular(24),
                   clipBehavior: Clip.antiAlias,
                   child: Image.asset(
-                    widget.imagePath ?? 'assets/images/tagamly_sozler001.png',
+                    imagePath ?? 'assets/images/tagamly_sozler001.png',
                     width: 300,
                     height: 200,
                     fit: BoxFit.cover,
                   ),
                 ),
-                // Positioned(
-                //     top: 10,
-                //     right: 10,
-                //     child: IconButton(
-                //       icon: AnimatedSwitcher(
-                //         duration: const Duration(milliseconds: 100),
-                //         child: Icon(
-                //           isFavorite ? Icons.favorite : Icons.favorite_border,
-                //           color: Theme.of(context).highlightColor,
-                //           key: ValueKey<bool>(isFavorite),
-                //           size: 30.0,
-                //         ),
-                //       ),
-                //       onPressed: toggleFavorite,
-                //     )),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Obx(() {
+                    final isFav = favoriteController.isFavorite(bookId);
+
+                    return IconButton(
+                      onPressed: () =>
+                          favoriteController.toggleFavorite(bookId),
+                      icon: Icon(
+                        isFav ? Icons.favorite : Icons.favorite_border,
+                        color: isFav ? Colors.red : Colors.grey,
+                        size: 30,
+                      ),
+                    );
+                  }),
+                ),
               ],
             ),
             const SizedBox(height: 10),
@@ -74,8 +77,8 @@ class _BookWidgetState extends State<BookWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.bookTitle),
-                  Text(widget.bookAuthor),
+                  Text(bookTitle),
+                  Text(bookAuthor),
                 ],
               ),
             ),
