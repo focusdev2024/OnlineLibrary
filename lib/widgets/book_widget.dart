@@ -21,7 +21,7 @@ class BookWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(5.0),
       child: Container(
         width: 200,
         decoration: BoxDecoration(
@@ -77,8 +77,9 @@ class BookWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(bookTitle),
-                  Text(bookAuthor),
+                  Text(bookTitle, maxLines: 1, overflow: TextOverflow.ellipsis),
+                  Text(bookAuthor,
+                      maxLines: 1, overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),

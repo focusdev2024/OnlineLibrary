@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:online_library/core/routers/app_routes.dart';
 import 'package:online_library/data/mock/mock_data_books.dart';
+import 'package:online_library/widgets/book_widget.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -70,73 +71,52 @@ class CategoryPage extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: booksInCategory.isEmpty
-            ? const Center(child: Text('No books in this category'))
-            : LayoutBuilder(
-                builder: (context, constraints) {
-                  int crossAxisCount = (constraints.maxWidth / 150).floor();
-                  if (crossAxisCount < 1) crossAxisCount = 1;
-                  return GridView.builder(
-                    padding: const EdgeInsets.all(8),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: crossAxisCount,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 0.6,
-                    ),
-                    itemCount: booksInCategory.length,
-                    itemBuilder: (context, index) {
-                      final book = booksInCategory[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Get.toNamed(Routes.readAndBuy, arguments: {
-                            'bookId': book.id,
-                            'title': book.title,
-                            'author': book.author,
-                            'imageUrl': book.imageUrl,
-                          });
-                        },
-                        child: Card(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                book.imageUrl,
-                                width: double.infinity,
-                                height: 150,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(height: 8),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(
-                                  book.title,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(
-                                  book.author,
-                                  style: const TextStyle(color: Colors.grey),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
+          child: booksInCategory.isEmpty
+              ? const Center(child: Text('No books in this category'))
+              : LayoutBuilder(
+                  builder: (context, constraints) {
+                    final width = constraints.maxWidth;
+
+                    final crossAxisCount =
+                        (constraints.maxWidth / 160).floor().clamp(1, 6);
+                    final bool isTablet = width >= 600;
+                    final aspectRatio = isTablet ? 0.58 : 0.7;
+
+                    return GridView.builder(
+                      padding: const EdgeInsets.all(8),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: crossAxisCount,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: aspectRatio,
+                      ),
+                      itemCount: booksInCategory.length,
+                      itemBuilder: (context, index) {
+                        final book = booksInCategory[index];
+
+                        return GestureDetector(
+                          onTap: () {
+                            Get.toNamed(
+                              Routes.readAndBuy,
+                              arguments: {
+                                'bookId': book.id,
+                                'title': book.title,
+                                'author': book.author,
+                                'imageUrl': book.imageUrl,
+                              },
+                            );
+                          },
+                          child: BookWidget(
+                            bookId: book.id,
+                            bookTitle: book.title,
+                            bookAuthor: book.author,
+                            imagePath: book.imageUrl,
                           ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
-      ),
+                        );
+                      },
+                    );
+                  },
+                )),
     );
   }
 }
