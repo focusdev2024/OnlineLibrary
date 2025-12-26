@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 import 'package:online_library/features/home_page/widgets/all_books_widget.dart';
-import 'package:online_library/widgets/search_box_widget.dart';
 import 'package:online_library/features/home_page/widgets/section_widget.dart';
 
 class MainPageWidget extends StatefulWidget {
@@ -18,8 +17,6 @@ class _MainPageWidgetState extends State<MainPageWidget> {
         'All Books',
       ];
 
-  final _searchController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -28,24 +25,22 @@ class _MainPageWidgetState extends State<MainPageWidget> {
       child: Scaffold(
         backgroundColor: Theme.of(context).canvasColor,
         appBar: AppBar(
-          toolbarHeight: 150,
+          toolbarHeight: 100,
           elevation: 0,
-          flexibleSpace: Padding(
-            padding: const EdgeInsets.all(10.0),
+          flexibleSpace: const Padding(
+            padding: EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Hello, Lover Books',
                   style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 5),
-                const Text(
+                SizedBox(height: 5),
+                Text(
                   'What do you want to read today?',
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w100),
                 ),
-                const SizedBox(height: 10),
-                SearchBoxWidget(searchController: _searchController),
               ],
             ),
           ),

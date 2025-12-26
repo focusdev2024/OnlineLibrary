@@ -1,10 +1,15 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 
 class BookWidget extends StatefulWidget {
+  final String bookTitle;
+  final String bookAuthor;
+  final bool isFavorite = false;
+  final String? imagePath;
   const BookWidget({
     super.key,
+    required this.bookTitle,
+    required this.bookAuthor,
+    this.imagePath,
   });
 
   @override
@@ -12,14 +17,6 @@ class BookWidget extends StatefulWidget {
 }
 
 class _BookWidgetState extends State<BookWidget> {
-  bool isFavorite = false;
-
-  void toggleFavorite() {
-    setState(() {
-      isFavorite = !isFavorite;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -47,38 +44,38 @@ class _BookWidgetState extends State<BookWidget> {
                   borderRadius: BorderRadius.circular(24),
                   clipBehavior: Clip.antiAlias,
                   child: Image.asset(
-                    'assets/images/tagamly_sozler001.png',
+                    widget.imagePath ?? 'assets/images/tagamly_sozler001.png',
                     width: 300,
                     height: 200,
                     fit: BoxFit.cover,
                   ),
                 ),
-                Positioned(
-                    top: 10,
-                    right: 10,
-                    child: IconButton(
-                      icon: AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 100),
-                        child: Icon(
-                          isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: Theme.of(context).highlightColor,
-                          key: ValueKey<bool>(isFavorite),
-                          size: 30.0,
-                        ),
-                      ),
-                      onPressed: toggleFavorite,
-                    )),
+                // Positioned(
+                //     top: 10,
+                //     right: 10,
+                //     child: IconButton(
+                //       icon: AnimatedSwitcher(
+                //         duration: const Duration(milliseconds: 100),
+                //         child: Icon(
+                //           isFavorite ? Icons.favorite : Icons.favorite_border,
+                //           color: Theme.of(context).highlightColor,
+                //           key: ValueKey<bool>(isFavorite),
+                //           size: 30.0,
+                //         ),
+                //       ),
+                //       onPressed: toggleFavorite,
+                //     )),
               ],
             ),
             const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.only(left: 8.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Book Name'),
-                  Text('Author Name'),
+                  Text(widget.bookTitle),
+                  Text(widget.bookAuthor),
                 ],
               ),
             ),

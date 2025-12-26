@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:online_library/core/routers/app_routes.dart';
 import 'package:online_library/data/mock/mock_data_books.dart';
 import 'package:online_library/data/mock/mock_data_category.dart';
+import 'package:online_library/widgets/book_widget.dart';
 
 class AllBooksWidget extends StatelessWidget {
   const AllBooksWidget({super.key});
@@ -23,7 +26,7 @@ class AllBooksWidget extends StatelessWidget {
               final filtredBooks = mockBooks
                   .where((book) => categories.bookIds.contains(book.id))
                   .toList();
-              // Here might be error page if no categories found
+              // Here error page if no categories found
               if (filtredBooks.isEmpty) return const SizedBox();
 
               return Column(
@@ -34,7 +37,7 @@ class AllBooksWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   SizedBox(
-                    height: 250,
+                    height: 280,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
@@ -44,36 +47,22 @@ class AllBooksWidget extends StatelessWidget {
 
                         return GestureDetector(
                           onTap: () {
-                            // Navigate to book details page
+                            Get.toNamed(Routes.readAndBuy, arguments: {
+                              'bookId': book.id,
+                              'title': book.title,
+                              'author': book.author,
+                              'imageUrl': book.imageUrl,
+                            });
                           },
-                          child: Container(
-                            width: 150,
-                            margin: const EdgeInsets.only(right: 10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.network(
-                                    book.imageUrl,
-                                    height: 200,
-                                    width: 150,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  book.title,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
+                          child: BookWidget(
+                              bookTitle: book.title,
+                              bookAuthor: book.author,
+                              imagePath: book.imageUrl),
                         );
                       },
                     ),
                   ),
+                  const SizedBox(height: 15),
                 ],
               );
             },
