@@ -48,11 +48,13 @@ class SectionsWidget extends StatelessWidget {
 
                         return GestureDetector(
                           onTap: () {
-                            Get.toNamed(Routes.category, arguments: {
-                              'id': category.id,
-                              'name': category.name,
-                              'imageUrl': category.imageUrl,
-                            });
+                            Get.toNamed(
+                              Routes.category,
+                              //id: NavIds.mainPage,
+                              arguments: {
+                                'categoryId': category.id,
+                              },
+                            );
                           },
                           child: CategoryWidget(
                             categoryNames: category.name,

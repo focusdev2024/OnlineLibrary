@@ -6,6 +6,7 @@ import 'package:online_library/core/routers/app_pages.dart';
 import 'package:online_library/core/routers/app_routes.dart';
 import 'package:online_library/features/favorites_page/controller/favorite_controller.dart';
 import 'package:online_library/features/favorites_page/data/models/favorite_book_model.dart';
+import 'package:online_library/features/library_main_page/controller/bottom_navbar_controller.dart';
 import 'package:online_library/l10n/app_localizations.dart';
 import 'package:online_library/tools/theme/app_theme.dart';
 
@@ -13,15 +14,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
-
   await Hive.initFlutter();
 
-  // Регистрируем адаптер, который создали в шаге 1
+  //Registering Hive Adapter for Favorite Book Model
   Hive.registerAdapter(FavoriteBookModelAdapter());
   Get.put(FavoriteController(), permanent: true);
 
-  // Открываем бокс для избранного
+  //Opening Hive Box for Favorites
   await Hive.openBox<FavoriteBookModel>('favorites_box');
+  //Bottom Nav Bar Controller
+  Get.put<BottomNavBarController>(BottomNavBarController());
 
   runApp(
     OnlineLibrary(

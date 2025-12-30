@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:online_library/core/routers/app_routes.dart';
+import 'package:online_library/core/routers/nav_ids.dart';
 import 'package:online_library/tools/colors/onlinelibrary_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -66,7 +67,11 @@ class _OwnBooksPageWidgetState extends State<OwnBooksPageWidget> {
           const SizedBox(height: 10),
           GestureDetector(
             onTap: () {
-              Get.toNamed(Routes.favorites, arguments: {});
+              Get.toNamed(
+                id: NavIds.ownBooksPage,
+                Routes.favorites,
+                arguments: {},
+              );
             },
             child: const _FavoriteContainerWidget(
               containerName: 'Favorites',

@@ -18,7 +18,7 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
       height: 40,
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor ,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: TextField(
