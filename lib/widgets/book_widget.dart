@@ -56,7 +56,6 @@ class BookWidget extends StatelessWidget {
                   right: 10,
                   child: Obx(() {
                     final isFav = favoriteController.isFavorite(bookId);
-
                     return IconButton(
                       onPressed: () =>
                           favoriteController.toggleFavorite(bookId),

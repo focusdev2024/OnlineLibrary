@@ -4,26 +4,24 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:online_library/features/favorites_page/controller/favorite_controller.dart';
 import 'package:online_library/widgets/style_button_widget.dart';
 
-class ReadAndBuyPage extends StatefulWidget {
+class ReadAndBuyPage extends StatelessWidget {
   const ReadAndBuyPage({super.key});
 
   @override
-  State<ReadAndBuyPage> createState() => _ReadAndBuyPageState();
-}
-
-class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
-  @override
   Widget build(BuildContext context) {
+    final FavoriteController favoriteController =
+        Get.find<FavoriteController>();
     final bookArgs = Get.arguments as Map<String, dynamic>?;
+    final int bookId = bookArgs?['id'] as int? ?? 0;
     final String bookTitle =
         bookArgs?['title'] as String? ?? 'Name of the book';
     final String bookAuthor =
         bookArgs?['author'] as String? ?? 'Author of the book';
     final String bookImageUrl = bookArgs?['imageUrl'] as String? ??
         'assets/images/tagamly_sozler001.png';
-
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
@@ -70,6 +68,37 @@ class _ReadAndBuyPageState extends State<ReadAndBuyPage> {
                     Icons.chevron_left_rounded,
                     color: Theme.of(context).dividerColor,
                   ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 10,
+            right: 10,
+            child: ClipOval(
+              child: Container(
+                width: 40,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).disabledColor.withOpacity(0.3),
+                  shape: BoxShape.circle,
+                ),
+                child: Obx(
+                  () {
+                    final isFav = favoriteController.isFavorite(bookId);
+                    return IconButton(
+                      iconSize: 24,
+                      padding: EdgeInsets.zero,
+                      onPressed: () =>
+                          favoriteController.toggleFavorite(bookId),
+                      icon: Icon(
+                        isFav ? Icons.favorite : Icons.favorite_border,
+                        color: isFav ? Colors.red : Colors.grey,
+                        size: 30,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
